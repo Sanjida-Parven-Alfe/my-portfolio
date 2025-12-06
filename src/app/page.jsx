@@ -45,43 +45,43 @@ const education = [
 const experiences = [
   {
     role: "Fresher",
-
   }
 ];
 
+// --- UPDATED PROJECTS SECTION ---
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    image: "/project1.png", 
-    stack: ["Next.js", "Tailwind", "MongoDB"],
-    description: "A fully functional e-commerce website with cart and checkout functionality.",
-    challenges: "Handling complex state management for the cart and optimizing database queries.",
-    improvements: "Adding AI-based product recommendations.",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com"
+    title: "The Book Haven",
+    image: "/BookHaven.png", 
+    stack: ["React", "Firebase", "MongoDB", "Tailwind"],
+    description: "A user-friendly online platform to explore, manage, and share favorite books. Features secure authentication and a real-time dashboard for managing personal book collections.",
+    challenges: "Implementing secure Firebase authentication alongside MongoDB server integration and managing real-time data updates for the dashboard.",
+    improvements: "Adding social sharing features and advanced reading progress tracking.",
+    liveLink: "https://the-book-haven-199.netlify.app/",
+    githubLink: "https://github.com/Sanjida-Parven-Alfe/book-haven-client.git"
   },
   {
     id: 2,
-    title: "Portfolio Website",
-    image: "/project2.png", 
-    stack: ["React", "Framer Motion", "CSS"],
-    description: "A personal portfolio to showcase skills and projects.",
-    challenges: "Making the design fully responsive and smooth animations.",
-    improvements: "Adding a dark/light mode toggle.",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com"
+    title: "WarmPaws: Winter Pet Care",
+    image: "/WarmPaws.png", 
+    stack: ["React", "Firebase", "DaisyUI", "Tailwind"],
+    description: "A modern web application designed to help pet owners find and book winter care services, view tips, and connect with expert veterinarians.",
+    challenges: "Building a smooth booking system and handling complex user profile management with secure Firebase authentication.",
+    improvements: "Integration of a real-time chat system with veterinarians and an appointment reminder system.",
+    liveLink: "https://warmpws-mod9.netlify.app/",
+    githubLink: "https://github.com/Sanjida-Parven-Alfe/warmpaws.git" // Placeholder link updated to match your username pattern
   },
   {
     id: 3,
-    title: "Task Management App",
-    image: "/project3.png", 
-    stack: ["Vue.js", "Firebase"],
-    description: "A drag-and-drop task manager for teams.",
-    challenges: "Real-time data synchronization.",
-    improvements: "Mobile app version using React Native.",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com"
+    title: "Focus & Productivity Hub",
+    image: "/HeeroApp.png", 
+    stack: ["React", "Context API", "Tailwind", "Lazy Load"],
+    description: "A web application for discovering and exploring productivity apps with detailed ratings, reviews, and download stats using optimized lazy loading.",
+    challenges: "Implementing lazy loading and Suspense for optimal performance with large datasets and ensuring smooth routing.",
+    improvements: "Adding a user review submission system and implementing a dark/light mode toggle.",
+    liveLink: "https://hero-io-app-199.netlify.app/",
+    githubLink: "https://github.com/Sanjida-Parven-Alfe/focus-productivity-app.git" // Placeholder link updated to match your username pattern
   }
 ];
 
