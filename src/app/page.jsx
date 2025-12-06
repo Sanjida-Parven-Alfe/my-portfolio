@@ -10,7 +10,7 @@ import { Mail, Phone, ExternalLink, X, Menu, Download } from "lucide-react";
 const personalInfo = {
   name: "Sanjida Parven Alfe",
   designation: "MERN Stack Web Developer",
-  about: "I am a passionate developer currently learning web development. I enjoy building clean, functional, and user-friendly websites. Apart from coding, I love data analysis and exploring AI agents. When not coding, I enjoy reading tech blogs and gaming.",
+  about: "I'm a passionate about building modern, responsive, and high-performance web applications using JavaScript, Next.js, React, Node.js, and MongoDB.I love exploring new technologies, solving complex problems. When not coding, I enjoy reading tech blogs and gaming.",
   resumeLink: "/Sanjida Parven Alfe.pdf", 
   email: "sanjidaparvinalfe@gmail.com",
   phone: "+880 1316 315141",
@@ -220,10 +220,10 @@ export default function Portfolio() {
               <a 
                 href={personalInfo.resumeLink} 
                 download 
-                className="group relative px-8 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/50 transition-all hover:scale-105"
+                className="group relative px-3 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/50 transition-all hover:scale-105"
               >
-                <span className="flex items-center gap-2">
-                  <Download size={20} /> Download Resume
+                <span className="flex items-center gap-3">
+                  <Download size={25} /> Download Resume
                 </span>
               </a>
               
@@ -251,7 +251,7 @@ export default function Portfolio() {
             <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-full p-1 bg-gradient-to-tr from-violet-500 via-cyan-500 to-transparent mx-auto">
                <div className="w-full h-full rounded-full overflow-hidden relative bg-[#0B1120]">
                   <Image 
-                    src="/profile.jpg" 
+                    src="/profile.png" 
                     alt="Profile" 
                     fill 
                     className="object-cover"
