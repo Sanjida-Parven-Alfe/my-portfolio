@@ -10,7 +10,7 @@ import { Mail, Phone, ExternalLink, X, Menu, Download } from "lucide-react";
 const personalInfo = {
   name: "Sanjida Parven Alfe",
   designation: "MERN Stack Web Developer",
-  about: "I'm a passionate about building modern, responsive, and high-performance web applications using JavaScript, Next.js, React, Node.js, and MongoDB.I love exploring new technologies, solving complex problems. When not coding, I enjoy reading tech blogs and gaming.",
+  about: "I'm a passionate about building modern, responsive, and high-performance web applications using JavaScript, Next.js, React, Node.js, and MongoDB. I love exploring new technologies, solving complex problems. When not coding, I enjoy reading tech blogs and gaming.",
   resumeLink: "/Sanjida Parven Alfe.pdf", 
   email: "sanjidaparvinalfe@gmail.com",
   phone: "+880 1316 315141",
@@ -48,7 +48,6 @@ const experiences = [
   }
 ];
 
-// --- UPDATED PROJECTS SECTION ---
 const projects = [
   {
     id: 1,
@@ -70,7 +69,7 @@ const projects = [
     challenges: "Building a smooth booking system and handling complex user profile management with secure Firebase authentication.",
     improvements: "Integration of a real-time chat system with veterinarians and an appointment reminder system.",
     liveLink: "https://warmpws-mod9.netlify.app/",
-    githubLink: "https://github.com/Sanjida-Parven-Alfe/warmpaws.git" // Placeholder link updated to match your username pattern
+    githubLink: "https://github.com/Sanjida-Parven-Alfe/warmpaws.git"
   },
   {
     id: 3,
@@ -81,7 +80,7 @@ const projects = [
     challenges: "Implementing lazy loading and Suspense for optimal performance with large datasets and ensuring smooth routing.",
     improvements: "Adding a user review submission system and implementing a dark/light mode toggle.",
     liveLink: "https://hero-io-app-199.netlify.app/",
-    githubLink: "https://github.com/Sanjida-Parven-Alfe/focus-productivity-app.git" // Placeholder link updated to match your username pattern
+    githubLink: "https://github.com/Sanjida-Parven-Alfe/focus-productivity-app.git"
   }
 ];
 
@@ -151,12 +150,17 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0B1120] text-slate-300 font-sans selection:bg-violet-500/30 selection:text-violet-200">
       
-      {/* 1. NAVBAR */}
+      {/* 1. NAVBAR (Updated Logo) */}
       <nav className="fixed top-0 w-full z-50 bg-[#0B1120]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
-            DevPortfolio.
-          </h1>
+          
+          {/* UPDATED LOGO SECTION */}
+          <div className="flex items-center">
+
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+              Alfe
+            </h1>
+          </div>
           
           <div className="hidden md:flex space-x-8 text-sm font-medium">
             {["About", "Skills", "Education", "Projects", "Contact"].map((item) => (
