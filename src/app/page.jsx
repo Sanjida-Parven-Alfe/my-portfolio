@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, ExternalLink, X, Menu, Download, Facebook, Twitter } from "lucide-react";
+import { Mail, Phone, ExternalLink, X, Menu, Download } from "lucide-react";
 
 // --- DATA SECTION ---
 
@@ -11,14 +11,13 @@ const personalInfo = {
   name: "Sanjida Parven Alfe",
   designation: "MERN Stack Web Developer",
   about: "I am a passionate developer currently learning web development. I enjoy building clean, functional, and user-friendly websites. Apart from coding, I love data analysis and exploring AI agents. When not coding, I enjoy reading tech blogs and gaming.",
-  resumeLink: "/Sanjida Parven Alfe.pdf", // Ensure this file exists in 'public' folder
+  resumeLink: "/Sanjida Parven Alfe.pdf", 
   email: "sanjidaparvinalfe@gmail.com",
   phone: "+880 1316 315141",
   socials: {
     github: "https://github.com/Sanjida-Parven-Alfe",
     linkedin: "https://www.linkedin.com/in/sanjida-parven-alfe/",
     facebook: "https://facebook.com",
-    twitter: "https://twitter.com",
   }
 };
 
@@ -88,6 +87,27 @@ const projects = [
   }
 ];
 
+// --- BRAND ICONS COMPONENTS (Real Logos) ---
+
+const GithubIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405 1.02 0 2.04.135 3 .405 2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+  </svg>
+);
+
+const LinkedinIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
+
+const FacebookIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+  </svg>
+);
+
+
 // --- LOOPING TYPEWRITER COMPONENT ---
 
 const LoopingTypewriter = ({ text, speed = 150, pause = 2000 }) => {
@@ -97,29 +117,22 @@ const LoopingTypewriter = ({ text, speed = 150, pause = 2000 }) => {
   useEffect(() => {
     const handleTyping = () => {
       const currentLength = displayedText.length;
-
       if (!isDeleting) {
-        // Typing
         if (currentLength < text.length) {
           setDisplayedText(text.substring(0, currentLength + 1));
         } else {
-          // Finished typing, wait before deleting
           setTimeout(() => setIsDeleting(true), pause);
         }
       } else {
-        // Deleting
         if (currentLength > 0) {
           setDisplayedText(text.substring(0, currentLength - 1));
         } else {
-          // Finished deleting, start typing again
           setIsDeleting(false);
         }
       }
     };
-
     const typingSpeed = isDeleting ? speed / 2 : speed;
     const timer = setTimeout(handleTyping, isDeleting && displayedText === text ? pause : typingSpeed);
-
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, text, speed, pause]);
 
@@ -147,7 +160,6 @@ export default function Portfolio() {
             DevPortfolio.
           </h1>
           
-          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 text-sm font-medium">
             {["About", "Skills", "Education", "Projects", "Contact"].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-violet-400 transition-colors relative group">
@@ -157,13 +169,11 @@ export default function Portfolio() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-white">
             <Menu className="w-6 h-6" />
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
         {isMenuOpen && (
           <motion.div 
             initial={{ height: 0 }} animate={{ height: "auto" }}
@@ -189,7 +199,6 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
           <div className="flex-1 space-y-6 text-center md:text-left">
             
-            {/* LOOPING ANIMATION HERE */}
             <div className="h-8 flex justify-center md:justify-start items-center text-xl text-cyan-400 font-medium tracking-wide font-mono">
                <LoopingTypewriter text="HELLO, I'M" speed={150} pause={2000} />
             </div>
@@ -206,7 +215,7 @@ export default function Portfolio() {
               {personalInfo.about}
             </p>
 
-            {/* Buttons */}
+            {/* Buttons & Socials (Updated with Real Logos) */}
             <div className="flex flex-col md:flex-row gap-5 items-center pt-6 justify-center md:justify-start">
               <a 
                 href={personalInfo.resumeLink} 
@@ -217,16 +226,23 @@ export default function Portfolio() {
                   <Download size={20} /> Download Resume
                 </span>
               </a>
+              
               <div className="flex gap-4">
-                {[
-                  { icon: Github, link: personalInfo.socials.github },
-                  { icon: Linkedin, link: personalInfo.socials.linkedin },
-                  { icon: Facebook, link: personalInfo.socials.facebook }
-                ].map((social, idx) => (
-                  <a key={idx} href={social.link} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:text-cyan-400 transition-all hover:scale-110">
-                    <social.icon size={22} />
-                  </a>
-                ))}
+                {/* GitHub */}
+                <a href={personalInfo.socials.github} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-black hover:text-white hover:border-white/50 transition-all hover:scale-110">
+                   <GithubIcon className="w-6 h-6" />
+                </a>
+                
+                {/* LinkedIn */}
+                <a href={personalInfo.socials.linkedin} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#0077b5] hover:text-white transition-all hover:scale-110">
+                   <LinkedinIcon className="w-6 h-6" />
+                </a>
+
+                {/* Facebook */}
+                <a href={personalInfo.socials.facebook} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#1877F2] hover:text-white transition-all hover:scale-110">
+                   <FacebookIcon className="w-6 h-6" />
+                </a>
+
               </div>
             </div>
           </div>
@@ -386,7 +402,7 @@ export default function Portfolio() {
 
                 <div className="flex gap-4 pt-6 border-t border-white/10">
                   <a href={selectedProject.liveLink} target="_blank" className="flex-1 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-violet-500/25">Live Demo</a>
-                  <a href={selectedProject.githubLink} target="_blank" className="flex-1 py-3 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-center transition flex items-center justify-center gap-2 border border-white/10"><Github size={18}/> GitHub</a>
+                  <a href={selectedProject.githubLink} target="_blank" className="flex-1 py-3 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-center transition flex items-center justify-center gap-2 border border-white/10"><GithubIcon className="w-5 h-5"/> GitHub</a>
                 </div>
               </div>
             </motion.div>
