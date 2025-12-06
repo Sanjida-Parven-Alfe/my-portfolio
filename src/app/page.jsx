@@ -17,7 +17,7 @@ const personalInfo = {
   socials: {
     github: "https://github.com/Sanjida-Parven-Alfe",
     linkedin: "https://www.linkedin.com/in/sanjida-parven-alfe/",
-    facebook: "https://facebook.com",
+    facebook: "https://www.facebook.com/profile.php?id=61577289311471",
   }
 };
 
@@ -29,25 +29,23 @@ const skills = {
 
 const education = [
   {
-    degree: "B.Sc. in Computer Science",
-    institution: "University Name, Dhaka",
-    year: "2022 - Present",
-    details: "Currently studying core CS subjects including Algorithms and Web Engineering."
+    degree: "B.Sc. in Computer Science & Engineering",
+    institution: "American International University - Bangladesh, Dhaka",
+    year: "2023 - Present",
+    details: "Focusing on Software Engineering, Web Technologies, and Artificial Intelligence fundamentals."
   },
   {
     degree: "HSC (Science)",
-    institution: "College Name",
-    year: "2019 - 2021",
+    institution: "Rajendrapur Cantonment Public College",
+    year: "2018 - 2020",
     details: "GPA: 5.00"
   }
 ];
 
 const experiences = [
   {
-    role: "Frontend Intern",
-    company: "Tech Company Ltd",
-    year: "Jan 2024 - Present",
-    details: "Working on responsive UI design and React components."
+    role: "Fresher",
+
   }
 ];
 
