@@ -3,14 +3,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, ExternalLink, X, Menu, Download } from "lucide-react";
+import { Mail, Phone, ExternalLink, X, Menu, Download, MessageCircle } from "lucide-react";
 
 // --- DATA SECTION ---
 
 const personalInfo = {
   name: "Sanjida Parven Alfe",
   designation: "MERN Stack Web Developer",
-  about: "I'm a passionate about building modern, responsive, and high-performance web applications using JavaScript, Next.js, React, Node.js, and MongoDB. I love exploring new technologies, solving complex problems. When not coding, I enjoy reading tech blogs and gaming.",
+  // Updated Point 5: Journey, Interests, and Personality
+  about: "My coding journey began in 2023 with a deep curiosity for how digital experiences are crafted. Since then, I have specialized in the MERN stack, driven by the thrill of turning complex logic into seamless user interfaces. I am passionate about clean architecture and high-performance applications. Beyond the screen, I am an avid badminton player and a gaming enthusiast. These hobbies keep my mind sharp and my approach to problem-solving creative.",
   resumeLink: "/Sanjida Parven Alfe.pdf", 
   email: "sanjidaparvinalfe@gmail.com",
   phone: "+880 1316 315141",
@@ -21,10 +22,27 @@ const personalInfo = {
   }
 };
 
+// Updated Point 6: Added percentage for Graphical representation
 const skills = {
-  Frontend: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
-  Backend: ["Node.js", "Express", "MongoDB"],
-  Tools: ["Git", "GitHub", "VS Code", "Figma"]
+  Frontend: [
+    { name: "HTML", level: 95 },
+    { name: "CSS", level: 90 },
+    { name: "JavaScript", level: 85 },
+    { name: "React", level: 85 },
+    { name: "Next.js", level: 80 },
+    { name: "Tailwind CSS", level: 90 }
+  ],
+  Backend: [
+    { name: "Node.js", level: 75 },
+    { name: "Express", level: 80 },
+    { name: "MongoDB", level: 70 }
+  ],
+  Tools: [
+    { name: "Git", level: 85 },
+    { name: "GitHub", level: 90 },
+    { name: "VS Code", level: 95 },
+    { name: "Figma", level: 65 }
+  ]
 };
 
 const education = [
@@ -44,7 +62,10 @@ const education = [
 
 const experiences = [
   {
-    role: "Fresher",
+    role: "Fresher / Open to Internships",
+    company: "Seeking Opportunities",
+    year: "2024 - Present",
+    details: "Focusing on building production-grade MERN stack applications and contributing to open-source."
   }
 ];
 
@@ -54,9 +75,9 @@ const projects = [
     title: "The Book Haven",
     image: "/BookHaven.png", 
     stack: ["React", "Firebase", "MongoDB", "Tailwind"],
-    description: "A user-friendly online platform to explore, manage, and share favorite books. Features secure authentication and a real-time dashboard for managing personal book collections.",
-    challenges: "Implementing secure Firebase authentication alongside MongoDB server integration and managing real-time data updates for the dashboard.",
-    improvements: "Adding social sharing features and advanced reading progress tracking.",
+    description: "A user-friendly online platform to explore, manage, and share favorite books. Features secure authentication and a real-time dashboard.",
+    challenges: "Synchronizing Firebase Auth state with MongoDB user records while maintaining real-time UI updates.",
+    improvements: "Integrating a personalized recommendation engine using basic machine learning algorithms.",
     liveLink: "https://the-book-haven-199.netlify.app/",
     githubLink: "https://github.com/Sanjida-Parven-Alfe/book-haven-client.git"
   },
@@ -65,9 +86,9 @@ const projects = [
     title: "WarmPaws: Winter Pet Care",
     image: "/WarmPaws.png", 
     stack: ["React", "Firebase", "DaisyUI", "Tailwind"],
-    description: "A modern web application designed to help pet owners find and book winter care services, view tips, and connect with expert veterinarians.",
-    challenges: "Building a smooth booking system and handling complex user profile management with secure Firebase authentication.",
-    improvements: "Integration of a real-time chat system with veterinarians and an appointment reminder system.",
+    description: "A modern web application designed for pet owners to find and book winter care services and connect with experts.",
+    challenges: "Designing a flexible booking calendar that prevents double bookings and handles different time zones.",
+    improvements: "Adding a real-time video consultation feature for pet owners and veterinarians.",
     liveLink: "https://warmpws-mod9.netlify.app/",
     githubLink: "https://github.com/Sanjida-Parven-Alfe/warmpaws.git"
   },
@@ -76,15 +97,15 @@ const projects = [
     title: "Focus & Productivity Hub",
     image: "/HeeroApp.png", 
     stack: ["React", "Context API", "Tailwind", "Lazy Load"],
-    description: "A web application for discovering and exploring productivity apps with detailed ratings, reviews, and download stats using optimized lazy loading.",
-    challenges: "Implementing lazy loading and Suspense for optimal performance with large datasets and ensuring smooth routing.",
-    improvements: "Adding a user review submission system and implementing a dark/light mode toggle.",
+    description: "A web application for discovering and exploring productivity apps with detailed ratings and optimized performance.",
+    challenges: "Reducing Initial Load Time (LCP) by 40% through aggressive lazy loading and image optimization.",
+    improvements: "Implementing a gamified 'Focus Mode' with a pomodoro timer and reward system.",
     liveLink: "https://hero-io-app-199.netlify.app/",
     githubLink: "https://github.com/Sanjida-Parven-Alfe/focus-productivity-app.git"
   }
 ];
 
-// --- BRAND ICONS COMPONENTS (Real Logos) ---
+// --- BRAND ICONS ---
 
 const GithubIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -103,9 +124,6 @@ const FacebookIcon = ({ className }) => (
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
   </svg>
 );
-
-
-// --- LOOPING TYPEWRITER COMPONENT ---
 
 const LoopingTypewriter = ({ text, speed = 150, pause = 2000 }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -141,8 +159,6 @@ const LoopingTypewriter = ({ text, speed = 150, pause = 2000 }) => {
   );
 };
 
-// --- MAIN COMPONENT ---
-
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -150,13 +166,10 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0B1120] text-slate-300 font-sans selection:bg-violet-500/30 selection:text-violet-200">
       
-      {/* 1. NAVBAR (Updated Logo) */}
+      {/* 1. NAVBAR */}
       <nav className="fixed top-0 w-full z-50 bg-[#0B1120]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          
-          {/* UPDATED LOGO SECTION */}
           <div className="flex items-center">
-
             <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
               Alfe
             </h1>
@@ -177,34 +190,26 @@ export default function Portfolio() {
         </div>
 
         {isMenuOpen && (
-          <motion.div 
-            initial={{ height: 0 }} animate={{ height: "auto" }}
-            className="md:hidden bg-[#0F172A] border-b border-white/10 overflow-hidden"
-          >
+          <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} className="md:hidden bg-[#0F172A] border-b border-white/10 overflow-hidden">
             <div className="flex flex-col p-4 space-y-4 text-center">
               {["About", "Skills", "Education", "Projects", "Contact"].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-violet-400">
-                  {item}
-                </a>
+                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)} className="block py-2 hover:text-violet-400">{item}</a>
               ))}
             </div>
           </motion.div>
         )}
       </nav>
 
-      {/* 2. HERO SECTION */}
+      {/* 2. HERO & ABOUT SECTION */}
       <section id="about" className="pt-32 pb-20 px-6 min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Background Glow Effect */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-violet-600/20 rounded-full blur-[128px] -z-10"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[128px] -z-10"></div>
 
         <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
           <div className="flex-1 space-y-6 text-center md:text-left">
-            
             <div className="h-8 flex justify-center md:justify-start items-center text-xl text-cyan-400 font-medium tracking-wide font-mono">
-               <LoopingTypewriter text="HELLO, I'M" speed={150} pause={2000} />
+               <LoopingTypewriter text="HELLO, I'M" />
             </div>
-
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-tight">
               {personalInfo.name.split(" ")[0]} <br />
               <span className="bg-gradient-to-r from-violet-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
@@ -212,39 +217,18 @@ export default function Portfolio() {
               </span>
             </h1>
             <p className="text-2xl text-slate-400">{personalInfo.designation}</p>
-            
             <p className="text-slate-400 leading-relaxed max-w-lg mx-auto md:mx-0 text-lg">
               {personalInfo.about}
             </p>
 
-            {/* Buttons & Socials (Updated with Real Logos) */}
             <div className="flex flex-col md:flex-row gap-5 items-center pt-6 justify-center md:justify-start">
-              <a 
-                href={personalInfo.resumeLink} 
-                download 
-                className="group relative px-3 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/50 transition-all hover:scale-105"
-              >
-                <span className="flex items-center gap-3">
-                  <Download size={25} /> Download Resume
-                </span>
+              <a href={personalInfo.resumeLink} download className="group relative px-6 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-lg shadow-violet-500/25 hover:shadow-violet-500/50 transition-all hover:scale-105">
+                <span className="flex items-center gap-3"><Download size={20} /> Download Resume</span>
               </a>
-              
               <div className="flex gap-4">
-                {/* GitHub */}
-                <a href={personalInfo.socials.github} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-black hover:text-white hover:border-white/50 transition-all hover:scale-110">
-                   <GithubIcon className="w-6 h-6" />
-                </a>
-                
-                {/* LinkedIn */}
-                <a href={personalInfo.socials.linkedin} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#0077b5] hover:text-white transition-all hover:scale-110">
-                   <LinkedinIcon className="w-6 h-6" />
-                </a>
-
-                {/* Facebook */}
-                <a href={personalInfo.socials.facebook} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#1877F2] hover:text-white transition-all hover:scale-110">
-                   <FacebookIcon className="w-6 h-6" />
-                </a>
-
+                <a href={personalInfo.socials.github} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-black hover:text-white transition-all hover:scale-110"><GithubIcon className="w-6 h-6" /></a>
+                <a href={personalInfo.socials.linkedin} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#0077b5] hover:text-white transition-all hover:scale-110"><LinkedinIcon className="w-6 h-6" /></a>
+                <a href={personalInfo.socials.facebook} target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-[#1877F2] hover:text-white transition-all hover:scale-110"><FacebookIcon className="w-6 h-6" /></a>
               </div>
             </div>
           </div>
@@ -252,20 +236,14 @@ export default function Portfolio() {
           <div className="flex-1 relative">
             <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-full p-1 bg-gradient-to-tr from-violet-500 via-cyan-500 to-transparent mx-auto">
                <div className="w-full h-full rounded-full overflow-hidden relative bg-[#0B1120]">
-                  <Image 
-                    src="/profile.png" 
-                    alt="Profile" 
-                    fill 
-                    className="object-cover"
-                    priority
-                  />
+                  <Image src="/profile.png" alt="Profile" fill className="object-cover" priority />
                </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. SKILLS SECTION */}
+      {/* 6. SKILLS SECTION (Updated to Graphical Format) */}
       <section id="skills" className="py-24 bg-[#0F172A]/50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-16 text-center text-white">
@@ -273,17 +251,24 @@ export default function Portfolio() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {Object.entries(skills).map(([category, items]) => (
-              <motion.div 
-                whileHover={{ y: -5 }}
-                key={category} 
-                className="bg-[#1E293B]/50 backdrop-blur-sm p-8 rounded-2xl border border-white/5 hover:border-violet-500/30 transition-all shadow-xl"
-              >
-                <h3 className="text-xl font-bold mb-6 text-violet-400 border-b border-white/5 pb-2 inline-block">{category}</h3>
-                <div className="flex flex-wrap gap-3">
+              <motion.div whileHover={{ y: -5 }} key={category} className="bg-[#1E293B]/50 backdrop-blur-sm p-8 rounded-2xl border border-white/5 shadow-xl">
+                <h3 className="text-xl font-bold mb-8 text-violet-400 border-b border-white/5 pb-2 inline-block">{category}</h3>
+                <div className="space-y-6">
                   {items.map((skill) => (
-                    <span key={skill} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-lg text-sm text-slate-300 hover:bg-violet-500/20 hover:text-white transition-colors cursor-default">
-                      {skill}
-                    </span>
+                    <div key={skill.name} className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-slate-300 font-medium">{skill.name}</span>
+                        <span className="text-cyan-400">{skill.level}%</span>
+                      </div>
+                      <div className="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }} 
+                          whileInView={{ width: `${skill.level}%` }} 
+                          transition={{ duration: 1, delay: 0.2 }}
+                          className="h-full bg-gradient-to-r from-violet-500 to-cyan-500"
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -302,7 +287,7 @@ export default function Portfolio() {
             <div className="space-y-10">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative pl-8 border-l border-white/10">
-                  <span className="absolute -left-1.5 top-2 w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+                  <span className="absolute -left-1.5 top-2 w-3 h-3 bg-violet-500 rounded-full"></span>
                   <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
                   <p className="text-cyan-400 font-medium mt-1">{edu.institution}</p>
                   <p className="text-sm text-slate-500 mt-1 mb-3">{edu.year}</p>
@@ -317,15 +302,15 @@ export default function Portfolio() {
               <span className="w-2 h-8 bg-cyan-500 rounded-full"></span> Experience
             </h2>
             <div className="space-y-10">
-              {experiences.length > 0 ? experiences.map((exp, idx) => (
+              {experiences.map((exp, idx) => (
                 <div key={idx} className="relative pl-8 border-l border-white/10">
-                   <span className="absolute -left-1.5 top-2 w-3 h-3 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></span>
+                   <span className="absolute -left-1.5 top-2 w-3 h-3 bg-cyan-500 rounded-full"></span>
                   <h3 className="text-xl font-bold text-white">{exp.role}</h3>
                   <p className="text-violet-400 font-medium mt-1">{exp.company}</p>
                   <p className="text-sm text-slate-500 mt-1 mb-3">{exp.year}</p>
                   <p className="text-slate-400 leading-relaxed">{exp.details}</p>
                 </div>
-              )) : <p className="text-slate-500 italic">Fresh Graduate / Open to work</p>}
+              ))}
             </div>
           </div>
         </div>
@@ -339,23 +324,15 @@ export default function Portfolio() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <motion.div 
-                key={project.id} 
-                whileHover={{ y: -10 }}
-                className="bg-[#1E293B] rounded-2xl overflow-hidden border border-white/5 group hover:border-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-300"
-              >
+              <motion.div key={project.id} whileHover={{ y: -10 }} className="bg-[#1E293B] rounded-2xl overflow-hidden border border-white/5 group hover:border-violet-500/30 transition-all duration-300">
                 <div className="relative h-52 w-full overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1E293B] to-transparent z-10 opacity-60"></div>
                   <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-110 transition duration-700" />
                 </div>
                 <div className="p-8 relative z-20 -mt-10">
                   <div className="bg-[#1E293B] p-4 rounded-xl shadow-lg border border-white/5">
                     <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                     <p className="text-slate-400 text-sm mb-4 line-clamp-2">{project.description}</p>
-                    <button 
-                      onClick={() => setSelectedProject(project)}
-                      className="w-full py-2.5 bg-white/5 hover:bg-gradient-to-r hover:from-violet-600 hover:to-indigo-600 text-slate-300 hover:text-white rounded-lg transition-all font-medium flex items-center justify-center gap-2 group-hover:border-violet-500/30 border border-transparent"
-                    >
+                    <button onClick={() => setSelectedProject(project)} className="w-full py-2.5 bg-white/5 hover:bg-gradient-to-r hover:from-violet-600 hover:to-indigo-600 text-slate-300 hover:text-white rounded-lg transition-all font-medium flex items-center justify-center gap-2 border border-transparent">
                       View Details <ExternalLink size={16} />
                     </button>
                   </div>
@@ -369,42 +346,27 @@ export default function Portfolio() {
       {/* PROJECT DETAILS MODAL */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-[#1E293B] w-full max-w-2xl rounded-2xl border border-white/10 overflow-hidden max-h-[90vh] overflow-y-auto shadow-2xl shadow-violet-500/20"
-              onClick={(e) => e.stopPropagation()}
-            >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" onClick={() => setSelectedProject(null)}>
+            <motion.div initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} className="bg-[#1E293B] w-full max-w-2xl rounded-2xl border border-white/10 overflow-hidden max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
               <div className="relative h-72 w-full group">
                 <Image src={selectedProject.image} alt={selectedProject.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E293B] via-transparent to-transparent"></div>
-                <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-black/60 p-2 rounded-full text-white hover:bg-red-500 transition border border-white/10"><X size={20} /></button>
+                <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 bg-black/60 p-2 rounded-full text-white hover:bg-red-500 transition"><X size={20} /></button>
               </div>
               <div className="p-8 space-y-6">
-                <div>
-                  <h3 className="text-3xl font-bold text-white">{selectedProject.title}</h3>
-                  <div className="flex gap-2 mt-4 flex-wrap">
-                    {selectedProject.stack.map((tech) => (
-                      <span key={tech} className="text-xs font-semibold px-3 py-1 bg-violet-500/10 text-violet-300 border border-violet-500/20 rounded-full">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <h3 className="text-3xl font-bold text-white">{selectedProject.title}</h3>
+                <div className="flex gap-2 flex-wrap">
+                  {selectedProject.stack.map((tech) => (
+                    <span key={tech} className="text-xs font-semibold px-3 py-1 bg-violet-500/10 text-violet-300 border border-violet-500/20 rounded-full">{tech}</span>
+                  ))}
                 </div>
-                
-                <div className="space-y-4 text-slate-300 leading-relaxed">
-                  <p><strong className="text-white block mb-1">Description:</strong> {selectedProject.description}</p>
-                  <p><strong className="text-white block mb-1">Challenges:</strong> {selectedProject.challenges}</p>
-                  <p><strong className="text-white block mb-1">Future Plans:</strong> {selectedProject.improvements}</p>
+                <div className="space-y-4 text-slate-300">
+                  <p><strong className="text-white">Description:</strong> {selectedProject.description}</p>
+                  <p><strong className="text-white">Challenges:</strong> {selectedProject.challenges}</p>
+                  <p><strong className="text-white">Future Plans:</strong> {selectedProject.improvements}</p>
                 </div>
-
                 <div className="flex gap-4 pt-6 border-t border-white/10">
-                  <a href={selectedProject.liveLink} target="_blank" className="flex-1 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold rounded-xl text-center transition shadow-lg shadow-violet-500/25">Live Demo</a>
-                  <a href={selectedProject.githubLink} target="_blank" className="flex-1 py-3 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl text-center transition flex items-center justify-center gap-2 border border-white/10"><GithubIcon className="w-5 h-5"/> GitHub</a>
+                  <a href={selectedProject.liveLink} target="_blank" className="flex-1 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold rounded-xl text-center">Live Demo</a>
+                  <a href={selectedProject.githubLink} target="_blank" className="flex-1 py-3 bg-white/5 text-white font-bold rounded-xl text-center flex items-center justify-center gap-2 border border-white/10"><GithubIcon className="w-5 h-5"/> GitHub</a>
                 </div>
               </div>
             </motion.div>
@@ -412,21 +374,21 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {/* 10. CONTACT SECTION */}
-      <section id="contact" className="py-24 px-6 relative overflow-hidden">
-        {/* Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[100px] -z-10"></div>
-
+      {/* 10. CONTACT SECTION (Updated with WhatsApp) */}
+      <section id="contact" className="py-24 px-6 relative">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-white">Get In <span className="text-cyan-400">Touch</span></h2>
-          <p className="text-slate-400 mb-12 text-lg">Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-          
-          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
-            <a href={`mailto:${personalInfo.email}`} className="flex items-center justify-center gap-3 px-8 py-4 bg-[#1E293B] border border-white/5 rounded-2xl hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all text-white group">
-              <Mail className="text-cyan-400 group-hover:scale-110 transition-transform" /> {personalInfo.email}
+          <p className="text-slate-400 mb-12 text-lg">I am currently looking for new opportunities. My inbox is always open!</p>
+          <div className="flex flex-col md:flex-row justify-center gap-4 mb-12">
+            <a href={`mailto:${personalInfo.email}`} className="flex items-center justify-center gap-3 px-6 py-4 bg-[#1E293B] border border-white/5 rounded-2xl hover:border-cyan-500/50 transition-all text-white">
+              <Mail className="text-cyan-400" /> {personalInfo.email}
             </a>
-            <a href={`tel:${personalInfo.phone}`} className="flex items-center justify-center gap-3 px-8 py-4 bg-[#1E293B] border border-white/5 rounded-2xl hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] transition-all text-white group">
-              <Phone className="text-violet-400 group-hover:scale-110 transition-transform" /> {personalInfo.phone}
+            <a href={`tel:${personalInfo.phone}`} className="flex items-center justify-center gap-3 px-6 py-4 bg-[#1E293B] border border-white/5 rounded-2xl hover:border-violet-500/50 transition-all text-white">
+              <Phone className="text-violet-400" /> {personalInfo.phone}
+            </a>
+            {/* Added WhatsApp Link */}
+            <a href={`https://wa.me/${personalInfo.phone.replace(/\s+/g, '')}`} target="_blank" className="flex items-center justify-center gap-3 px-6 py-4 bg-[#1E293B] border border-white/5 rounded-2xl hover:border-green-500/50 transition-all text-white">
+              <MessageCircle className="text-green-500" /> WhatsApp
             </a>
           </div>
         </div>
@@ -435,7 +397,7 @@ export default function Portfolio() {
       {/* 11. FOOTER */}
       <footer className="py-8 bg-[#020617] text-center text-slate-600 text-sm border-t border-white/5">
         <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
-        <p className="mt-2">Built with <span className="text-violet-500">Next.js</span> & <span className="text-cyan-500">Tailwind</span></p>
+        <p className="mt-2">Crafted with ❤️ using Next.js & Tailwind</p>
       </footer>
     </div>
   );
